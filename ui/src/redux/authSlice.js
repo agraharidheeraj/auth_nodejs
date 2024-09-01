@@ -1,12 +1,9 @@
 import  { createSlice } from "@reduxjs/toolkit";
-const Cookies  = require("universal-cookie");
+import { isTokenPresent } from "./authToken";
 
-const cookies = new Cookies();
-const token = cookies.get("token");
-console.log("this is my token", token)
 const initialState = {
   user: null,
-  isAuthenticated: !!token,
+  isAuthenticated: isTokenPresent(),
   loading: false,
   isVerified: false,
   error: null,

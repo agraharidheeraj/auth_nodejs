@@ -4,6 +4,10 @@ const { sequelize } = require('./models');
 require('dotenv').config();
 const authRoute = require('./routes/authRoute')
 const cookie= require('cookie-parser')
+const googleRoute = require('./routes/googleRoute')
+const expressSession = require('express-session');
+const passport = require('passport');
+const todosRoute= require('./routes/todosRoute')
 
 
 const app=express()
@@ -21,9 +25,18 @@ const corsOption = {
 }
 
 app.use(cors(corsOption));
+app.use(expressSession({
+    secret: process.env.SESSION_SECRET,
+    resave:false,
+    saveUninitialized:false
+}))
 
+app.use(passport.initialize());
+app.use(passport.session())
 //Routes
 app.use('/',authRoute)
+app.use('/',googleRoute)
+app.use('/',todosRoute)
 
 async function connectDb() {
     try {

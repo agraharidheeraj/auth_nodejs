@@ -15,6 +15,6 @@ router.get('/auth/logout', authController.logout)
 
 
 //auth request
-router.get('/user/profile/:userId',authMiddleware, authController.getUserProfile)
+router.get('/user/profile',authMiddleware, authController.getUserProfile)
 
 module.exports= router;

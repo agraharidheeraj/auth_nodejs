@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { authRequest, authSuccess } from "../../redux/authSlice";
+import GoogleLogin from "./GoogleLogin";
 
 const Login = () => {
   const [isSignUp, setIsSignUp] = useState(false);
@@ -93,8 +94,8 @@ const Login = () => {
   }
 
   return (
-    <div className="flex min-h-full flex-1 justify-center px-6 py-12 lg:px-8 mt-32">
-      <div className="flex flex-col justify-center w-full px-4 py-10 md:px-0 max-w-md space-y-6 rounded-l-lg">
+    <div className="flex min-h-full flex-1 justify-center px-6 py-12 lg:px-8 mt-10">
+      <div className="flex flex-col justify-center w-full px-4 py-10 md:px-0 max-w-md space-y-6 shadow-lg rounded-l-lg">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <img
             alt="your company img"
@@ -195,6 +196,10 @@ const Login = () => {
             </div>
           </form>
 
+          <div className="mt-4">
+            <GoogleLogin/>
+          </div>
+
           <p className="mt-5 text-center text-sm text-gray-500">
             {isSignUp ? "Already have an account !" : "Not a account?"}{" "}
             <button
@@ -209,7 +214,7 @@ const Login = () => {
       </div>
       <div className="hidden md:flex md:items-center md:justify-center md:w-1/2">
         <img
-          src="https://img.freepik.com/free-vector/mobile-login-concept-illustration_114360-83.jpg?size=626&ext=jpg"
+          src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f"
           alt="login_img"
           className="object-cover w-full h-full  rounded-r-lg"
         />
